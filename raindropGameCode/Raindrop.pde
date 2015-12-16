@@ -1,11 +1,13 @@
 class Raindrop {
-  float diam;
+  float diam, c;
   PVector loc, velka, accel;
 
   Raindrop(float x, float y) {
     noStroke();
     smooth();
-    fill(150);
+
+    c = random(10);
+    fill(206 + c, 200 + c, 147 + c);
 
     loc = new PVector(x, y);
     velka = new PVector(0, random(-1, 1));
@@ -18,7 +20,7 @@ class Raindrop {
   }
 
   void display() {
-    diam = 20 + random(-1.5, 1.5);
+    diam = 2 + random(-1.5, 1.5);
     ellipse(loc.x, loc.y, diam, diam);
   }
 
