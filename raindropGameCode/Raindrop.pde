@@ -24,8 +24,8 @@ class Raindrop {
     ellipse(loc.x, loc.y, diam, diam);
   }
 
-  boolean isInContactWith(PVector con) {
-    if (loc.dist(con) < diam/2) {
+  boolean isInContactWith(Catcher con) {
+    if (loc.dist(con.loc) < con.diam/2) {
       return true;
     } else {
       return false;
@@ -34,5 +34,19 @@ class Raindrop {
 
   void reset() {
     loc.set(random(width), 0);
+  }
+}
+
+class Catcher {
+  PVector loc;
+  int diam;
+
+  Catcher(int tDiam) {
+    loc = new PVector(mouseX, mouseY);
+    diam = tDiam;
+  }
+
+  void there() {
+    ellipse(loc.x, loc.y, diam, diam);
   }
 }
