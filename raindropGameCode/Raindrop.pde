@@ -32,6 +32,14 @@ class Raindrop {
     }
   }
 
+  boolean shouldBeDead() {
+    if (loc.y > height - diam/2) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
   void reset() {
     loc.set(random(width), 0);
   }
