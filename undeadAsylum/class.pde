@@ -29,7 +29,7 @@ class Corpse {
   }
 
   void reset() {
-    loc.set(random(width), 0);
+    loc.set(random(width), oscar.height/4);
   }
 
   boolean conCatcher(Catcher con) {
