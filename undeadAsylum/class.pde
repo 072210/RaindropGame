@@ -1,13 +1,18 @@
 void title() {
   background(0);
-  
+  //PFont darkSoul;
+  //font = loadFont("");
+  //textFont(darkSoul, size);
+  text("fwef", width/2, height/2);
 }
 
 class Corpse {
+  float tall;
+  PImage undead;
   PVector loc, velka, accel;
 
   Corpse(float x, float y) {
-    //image
+    undead = loadImage("");
 
     loc = new PVector(x, y);
     velka = new PVector(0, random(-3, 3));
@@ -28,7 +33,7 @@ class Corpse {
   }
 
   boolean conCatcher(Catcher con) {
-    if () {
+    if (loc.dist(con.loc) < con.tall/2) {
       return true;
     } else {
       return false;
@@ -36,13 +41,21 @@ class Corpse {
   }
 
   boolean conFloor() {
+    if (loc.y > height - tall/2) {
+      return true;
+    } else {
+      return false;
+    }
   }
 }
 
 class Catcher {
+  PImage solaire;
   PVector loc;
+  float tall = solaire.height/2;
 
   Catcher() {
+    solaire = loadImage("");
     loc = new PVector(mouseX, height);
   }
 
