@@ -3,7 +3,7 @@ void title() {
   //PFont darkSoul;
   //font = loadFont("");
   //textFont(darkSoul, size);
-  text("fwef", width/2, height/2);
+  text("dearh to henters", width/2, height/2);
 }
 
 class Corpse {
@@ -52,14 +52,14 @@ class Corpse {
 class Catcher {
   PImage solaire;
   PVector loc;
-  float tall = solaire.height/2;
+  float tall = 589;
 
   Catcher() {
-    solaire = loadImage("");
+    solaire = loadImage("dark_souls__solaire_by_menaslg-d8izp0x.png");
     loc = new PVector(mouseX, height);
   }
 
   void display() {
-    //load image
+    image(solaire, mouseX, height - solaire.height/8, solaire.width/4, solaire.height/4);
   }
 }
