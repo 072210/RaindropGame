@@ -28,6 +28,7 @@ void draw() {
 
     image(oscar, mouseX, oscar.height/8, oscar.width/4, oscar.height/4);
     chosenUndead = new Catcher();
+    chosenUndead.display();
   }
 }
 
