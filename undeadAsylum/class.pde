@@ -8,11 +8,11 @@ void title() {
 
 class Corpse {
   float tall;
-  PImage undead;
+  PImage humanity;
   PVector loc, velka, accel;
 
   Corpse(float x, float y) {
-    undead = loadImage("");
+    humanity = loadImage("2112.png");
 
     loc = new PVector(x, y);
     velka = new PVector(0, random(-3, 3));
@@ -25,7 +25,7 @@ class Corpse {
   }
 
   void display() {
-    //draw image
+    image(humanity, loc.x, loc.y);
   }
 
   void reset() {
