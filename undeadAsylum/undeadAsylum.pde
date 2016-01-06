@@ -8,7 +8,7 @@ Catcher chosenUndead;
 
 void setup() {
   size(1400, 800);
-  frameRate(30);
+  frameRate(10);
   title();
 
   imageMode(CENTER);
@@ -38,6 +38,9 @@ void draw() {
     for (int i = 100; i >= 0; i--) {
       c.display();
       c.fall();
+      if (c.bottom()) {
+        c.reset();
+      }
     }
   }
 }
