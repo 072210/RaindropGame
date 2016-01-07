@@ -4,7 +4,7 @@ void title() {
   //font = loadFont("");
   //textFont(darkSoul, size);
   textAlign(CENTER);
-  text("dearh to henters keh heh heh", width/2, height/2);
+  text("death to henters keh heh heh", width/2, height/2);
 }
 
 class Corpse {
