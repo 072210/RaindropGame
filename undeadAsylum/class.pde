@@ -10,21 +10,24 @@ void title() {
 class Catcher {
   PImage solaire;
   PVector loc;
+  float solX, solY;
 
   Catcher() {
     solaire = loadImage("dark_souls__solaire_by_menaslg-d8izp0x.png");
     loc = new PVector(mouseX, height);
+    solX = mouseX;
+    solY = height - solaire.height/8;
   }
 
   void display() {
-    image(solaire, mouseX, height - solaire.height/8, solaire.width/4, solaire.height/4);
+    image(solaire, solX, solY, solaire.width/4, solaire.height/4);
   }
 }
 
 class Corpse {
   PImage humanity;
   PVector loc, velka, accel;
-  float score = 0;
+  float score;
 
   Corpse(float x, float y) {
     humanity = loadImage("2112.png");
@@ -32,6 +35,8 @@ class Corpse {
     loc = new PVector(x, y);
     velka = new PVector(0, random(10));
     accel = new PVector(0, random(.5));
+    
+    score = 0;
   }
 
   void fall() {
@@ -54,17 +59,18 @@ class Corpse {
   }
 
   boolean contact() {
-    if (loc.x > mouseX - humanity.x && loc.x < mouseX + humanity.x && loc.y > solaire.height/4) {
+    if (loc.x > mouseX - 147 && loc.x < mouseX + 147 && loc.y > 170) {
       return true;
     } else {
       return false;
     }
   }
 
-  void scoreCalc() {
+  boolean scoreCalc() {
     if (contact()) {
-      score++;
-      reset();
+      return true;
+    } else {
+      return false;
     }
   }
 
