@@ -36,6 +36,7 @@ class Corpse {
     velka = new PVector(0, random(10));
     accel = new PVector(0, random(.5));
     
+    //fix scoring
     score = 0;
   }
 
@@ -66,6 +67,7 @@ class Corpse {
     }
   }
 
+//fix scoring
   boolean scoreCalc() {
     if (contact()) {
       return true;
@@ -74,6 +76,7 @@ class Corpse {
     }
   }
 
+//fix scoring
   void scoring() {
     textAlign(CENTER);
     text(score, width/2, height/2);
