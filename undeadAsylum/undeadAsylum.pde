@@ -8,6 +8,7 @@ Catcher chosenUndead;
 
 void setup() {
   size(1400, 800);
+  chosenUndead = new Catcher();
   frameRate(10);
   title();
 
@@ -31,16 +32,20 @@ void draw() {
 
     image(oscar, dropLoc, oscar.height/8, oscar.width/4, oscar.height/4);
 
-    chosenUndead = new Catcher();
+
     chosenUndead.display();
 
-    Corpse c = new Corpse(dropLoc, 0);
-    for (int i = 100; i >= 0; i--) {
-      c.display();
-      c.fall();
-      c.bottom();
-      c.scoreCalc();
-      c.scoring();
+    c.add(new Corpse(dropLoc, 0));
+    for (int i = c.size() -1; i >= 0; i--) {
+      Corpse deadBody = c.get(i);
+      deadBody.display();
+      deadBody.fall();
+      if (deadBody.bottom()) {
+        println("remove the corpse in frame " + frameCount);
+        c.remove(i);
+      }
+      deadBody.scoreCalc();
+      deadBody.scoring();
     }
   }
 }

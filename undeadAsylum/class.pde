@@ -20,6 +20,8 @@ class Catcher {
   }
 
   void display() {
+    solX = mouseX;
+    solY = height - solaire.height/8;
     image(solaire, solX, solY, solaire.width/4, solaire.height/4);
   }
 }
@@ -49,15 +51,24 @@ class Corpse {
     image(humanity, loc.x, loc.y);
   }
 
-  void reset() {
-    loc.set(dropLoc, oscar.height/4);
-  }
+  //void reset() {
+  //  loc.set(dropLoc, oscar.height/4);
+  //}
 
-  void bottom() {
-    if (loc.y > height - 1178) {
-      reset();
-    }
-  }
+  //void bottom() {
+  //  if (loc.y > height - 1178) {
+  //    reset();
+  //  }
+  //}
+
+boolean bottom(){
+   if (loc.y > height - 90) {
+     return true;
+   }
+   else{
+     return false;
+   }
+}
 
   boolean contact() {
     if (loc.x > mouseX - 147 && loc.x < mouseX + 147 && loc.y > 170) {
