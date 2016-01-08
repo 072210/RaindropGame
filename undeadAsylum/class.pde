@@ -7,9 +7,24 @@ void title() {
   text("death to henters keh heh heh", width/2, height/2);
 }
 
+class Catcher {
+  PImage solaire;
+  PVector loc;
+
+  Catcher() {
+    solaire = loadImage("dark_souls__solaire_by_menaslg-d8izp0x.png");
+    loc = new PVector(mouseX, height);
+  }
+
+  void display() {
+    image(solaire, mouseX, height - solaire.height/8, solaire.width/4, solaire.height/4);
+  }
+}
+
 class Corpse {
   PImage humanity;
   PVector loc, velka, accel;
+  float score = 0;
 
   Corpse(float x, float y) {
     humanity = loadImage("2112.png");
@@ -32,25 +47,29 @@ class Corpse {
     loc.set(dropLoc, oscar.height/4);
   }
 
-  boolean bottom() {
+  void bottom() {
     if (loc.y > height - 1178) {
+      reset();
+    }
+  }
+
+  boolean contact() {
+    if (loc.x > mouseX - humanity.x && loc.x < mouseX + humanity.x && loc.y > solaire.height/4) {
       return true;
     } else {
       return false;
     }
   }
-}
 
-class Catcher {
-  PImage solaire;
-  PVector loc;
-
-  Catcher() {
-    solaire = loadImage("dark_souls__solaire_by_menaslg-d8izp0x.png");
-    loc = new PVector(mouseX, height);
+  void scoreCalc() {
+    if (contact()) {
+      score++;
+      reset();
+    }
   }
 
-  void display() {
-    image(solaire, mouseX, height - solaire.height/8, solaire.width/4, solaire.height/4);
+  void scoring() {
+    textAlign(CENTER);
+    text(score, width/2, height/2);
   }
 }
