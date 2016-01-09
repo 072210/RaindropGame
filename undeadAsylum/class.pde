@@ -37,7 +37,7 @@ class Corpse {
     loc = new PVector(x, y);
     velka = new PVector(0, random(10));
     accel = new PVector(0, random(.5));
-    
+
     //fix scoring
     score = 0;
   }
@@ -51,34 +51,23 @@ class Corpse {
     image(humanity, loc.x, loc.y);
   }
 
-  //void reset() {
-  //  loc.set(dropLoc, oscar.height/4);
-  //}
-
-  //void bottom() {
-  //  if (loc.y > height - 1178) {
-  //    reset();
-  //  }
-  //}
-
-boolean bottom(){
-   if (loc.y > height - 90) {
-     return true;
-   }
-   else{
-     return false;
-   }
-}
-
-  boolean contact() {
-    if (loc.x > mouseX - 147 && loc.x < mouseX + 147 && loc.y > 170) {
+  boolean bottom() {
+    if (loc.y > height + 90) {
       return true;
     } else {
       return false;
     }
   }
 
-//fix scoring
+  boolean contact() {
+    if (loc.x > mouseX - 85 && loc.x < mouseX + 85 && loc.y > height - 280) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  //fix scoring
   boolean scoreCalc() {
     if (contact()) {
       return true;
@@ -87,7 +76,7 @@ boolean bottom(){
     }
   }
 
-//fix scoring
+  //fix scoring
   void scoring() {
     textAlign(CENTER);
     text(score, width/2, height/2);

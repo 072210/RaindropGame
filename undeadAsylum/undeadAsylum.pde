@@ -40,7 +40,7 @@ void draw() {
       Corpse deadBody = c.get(i);
       deadBody.display();
       deadBody.fall();
-      if (deadBody.bottom()) {
+      if (deadBody.bottom() || deadBody.contact()) {
         println("remove the corpse in frame " + frameCount);
         c.remove(i);
       }
