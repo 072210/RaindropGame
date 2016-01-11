@@ -4,7 +4,11 @@ void title() {
   //font = loadFont("");
   //textFont(darkSoul, size);
   textAlign(CENTER);
-  text("death to henters keh heh heh", width/2, height/2);
+  textSize(20);
+  text("YOU DIED", width/2, height/2 - 60);
+  text("I'm kidding; you've achieved max humanity, dear Solaire of Astora. Congratulations are due.", width/2, height/2 - 30);
+  text("Hmm, wait - you stole it from Knight Oscar?! How dare you! He was only trying to help you escape...", width/2, height/2);
+  text("Fiendish Dark Lord! You're the reason poor Oscar went Hollow!", width/2, height/2 + 30);
 }
 
 class Catcher {
@@ -38,7 +42,6 @@ class Corpse {
     velka = new PVector(0, random(10));
     accel = new PVector(0, random(.5));
 
-    //fix scoring
     score = 0;
   }
 
@@ -60,25 +63,24 @@ class Corpse {
   }
 
   boolean contact() {
-    if (loc.x > mouseX - 85 && loc.x < mouseX + 85 && loc.y > height - 280) {
+    if (loc.x >= mouseX - 85 && loc.x <= mouseX + 85 && loc.y >= height - 280) {
       return true;
     } else {
       return false;
     }
   }
 
-  //fix scoring
-  boolean scoreCalc() {
+  void scoreAdd() {
     if (contact()) {
-      return true;
-    } else {
-      return false;
+      score += 1;
     }
-  }
 
-  //fix scoring
-  void scoring() {
+    println(score);
     textAlign(CENTER);
-    text(score, width/2, height/2);
+    text(score + " / 99 Humanity", width/2, height/2);
+
+    if (score == 99) {
+      unlock = !unlock;
+    }
   }
 }
