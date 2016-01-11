@@ -25,13 +25,13 @@ class Catcher {
     solaire = loadImage("dark_souls__solaire_by_menaslg-d8izp0x.png");
     //initialise Solaire's location vector
     loc = new PVector(mouseX, height);
-    //initialise Solaire's image coordinates
-    solX = mouseX;
-    solY = height - solaire.height/8;
   }
 
   //create a function to display Solaire
   void display() {
+    //initialise Solaire's image coordinates
+    solX = mouseX;
+    solY = height - solaire.height/8;
     //draw Solaire there
     image(solaire, solX, solY, solaire.width/4, solaire.height/4);
   }

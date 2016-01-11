@@ -21,6 +21,9 @@ void setup() {
   //make the game sloooow
   frameRate(10);
 
+  //create a new catcher called chosenUndead
+  chosenUndead = new Catcher();
+
   //initialise score at zero
   score = 0;
 
@@ -38,8 +41,6 @@ void setup() {
   mouse = new PVector();
   //add a new corpse to the array
   c.add(new Corpse(mouseX, mouseY));
-  //create a new catcher called chosenUndead
-  chosenUndead = new Catcher();
 }
 
 //it is time to descend into the Abyss
