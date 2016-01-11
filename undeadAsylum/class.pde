@@ -7,8 +7,9 @@ void title() {
   textSize(20);
   text("YOU DIED", width/2, height/2 - 60);
   text("I'm kidding; you've achieved max humanity, dear Solaire of Astora. Congratulations are due.", width/2, height/2 - 30);
-  text("Hmm, wait - you stole it from Knight Oscar?! How dare you! He was only trying to help you escape...", width/2, height/2);
+  text("Hang on. You stole it from Knight Oscar?! But he was only trying to help you escape...", width/2, height/2);
   text("Fiendish Dark Lord! You're the reason poor Oscar went Hollow!", width/2, height/2 + 30);
+  text("- click to restart -", width/2, height - 15);
 }
 
 class Catcher {
@@ -33,7 +34,6 @@ class Catcher {
 class Corpse {
   PImage humanity;
   PVector loc, velka, accel;
-  float score;
 
   Corpse(float x, float y) {
     humanity = loadImage("2112.png");
@@ -41,8 +41,6 @@ class Corpse {
     loc = new PVector(x, y);
     velka = new PVector(0, random(10));
     accel = new PVector(0, random(.5));
-
-    score = 0;
   }
 
   void fall() {
@@ -67,20 +65,6 @@ class Corpse {
       return true;
     } else {
       return false;
-    }
-  }
-
-  void scoreAdd() {
-    if (contact()) {
-      score += 1;
-    }
-
-    println(score);
-    textAlign(CENTER);
-    text(score + " / 99 Humanity", width/2, height/2);
-
-    if (score == 99) {
-      unlock = !unlock;
     }
   }
 }

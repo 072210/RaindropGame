@@ -1,5 +1,5 @@
 boolean unlock = true;
-float dropLoc;
+float dropLoc, score;
 PImage oscar;
 PVector mouse;
 
@@ -12,6 +12,7 @@ void setup() {
   frameRate(10);
   title();
   noCursor();
+  score = 0;
 
   imageMode(CENTER);
   oscar = loadImage("19912_dark_souls_black.jpg");
@@ -36,15 +37,34 @@ void draw() {
     chosenUndead.display();
 
     c.add(new Corpse(dropLoc, 0));
-    for (int i = c.size() -1; i >= 0; i--) {
+    for (int i = c.size() - 1; i >= 0; i--) {
       Corpse deadBody = c.get(i);
       deadBody.display();
       deadBody.fall();
-      deadBody.scoreAdd();
+
       if (deadBody.bottom() || deadBody.contact()) {
         println("remove the humanity from frame " + frameCount);
         c.remove(i);
       }
+
+      if (deadBody.contact()) {
+        score += 1;
+      }
+
+      if (score >= 99) {
+        unlock = !unlock;
+      }
     }
+
+    println("humanity restored; up to " + score);
+    textAlign(CENTER);
+    text(score + " / 99 Humanity", width/2, height/2);
+  }
+}
+
+void mousePressed() {
+  if (!unlock) {
+    unlock = !unlock;
+    score = 0;
   }
 }
